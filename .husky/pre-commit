@@ -1,0 +1,43 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Styling, testing, and building before committing..."
+
+# Identify the package manager based on lock file presence
+if [ -f "yarn.lock" ]; then
+    PM_CMD="yarn"
+elif [ -f "pnpm-lock.yaml" ]; then
+    PM_CMD="pnpm"
+else
+    PM_CMD="npm"
+fi
+
+# Check Prettier
+$PM_CMD run check-format ||
+(
+    echo "Prettier Check Failed. Run $PM_CMD run format, add changes, and try committing again";
+    false;
+)
+
+# Check ESLint
+$PM_CMD run check-lint ||
+(
+    echo "ESLint Check Failed. Make the required changes listed above, add changes, and try committing again";
+    false;
+)
+
+# Check tsconfig
+$PM_CMD run check-types || 
+(
+    echo "Failed type check. Make the changes required above, add changes, and try committing again";
+    false;
+)
+
+# Build
+$PM_CMD run build ||
+(
+    echo "Your build failed, view the errors above";
+    false;
+)
+
+echo "Success Commit"
