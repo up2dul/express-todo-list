@@ -10,3 +10,7 @@
 #misc
 DS_Store
 .package-lock.json
+
+#environment
+.env
+.env.production
