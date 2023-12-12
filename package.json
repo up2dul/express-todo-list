@@ -10,7 +10,7 @@
     "format": "prettier -w ./src",
     "check-format": "prettier -c ./src",
     "check-types": "tsc --pretty --noEmit",
-    "check-lint": "eslint './**/*.{js,ts}'"
+    "check-lint": "eslint ./src/**/*.{js,ts}"
   },
   "husky": {
     "hooks": {
