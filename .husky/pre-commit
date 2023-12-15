@@ -12,17 +12,10 @@ else
     PM_CMD="npm"
 fi
 
-# Check Prettier
-$PM_CMD run check-format ||
+# Check Biome
+$PM_CMD run check ||
 (
-    echo "Prettier Check Failed. Run $PM_CMD run format, add changes, and try committing again";
-    false;
-)
-
-# Check ESLint
-$PM_CMD run check-lint ||
-(
-    echo "ESLint Check Failed. Make the required changes listed above, add changes, and try committing again";
+    echo "Biome Check Failed. Run $PM_CMD run format, add changes, and try committing again";
     false;
 )
 
