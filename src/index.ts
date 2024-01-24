@@ -1,6 +1,6 @@
+import cors from 'cors';
 import express from 'express';
 import type { Application, NextFunction, Response } from 'express';
-import cors from 'cors';
 
 import activityRoutes from './routes/activity';
 import todoRoutes from './routes/todo';

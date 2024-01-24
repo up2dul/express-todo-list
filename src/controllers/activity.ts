@@ -16,7 +16,6 @@ export async function getAllActivities(_: Request, res: Response) {
 				status: 'error',
 				message: error.message,
 			});
-			console.log('err:', error);
 		}
 	}
 }
@@ -43,8 +42,8 @@ export async function getDetailActivity(req: Request, res: Response) {
 export async function createActivity(req: Request, res: Response) {
 	const body: ActivityBody = req.body;
 	try {
-		const [data] = await ActivityModel.createActivity(body);
-		res.json({
+		const data = await ActivityModel.createActivity(body);
+		res.status(201).json({
 			status: 'Success',
 			message: 'Success',
 			data,
