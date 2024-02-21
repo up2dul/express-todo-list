@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import type { Application, NextFunction, Response } from 'express';
 
-import activityRoutes from './routes/activity';
+import activityRoutes from './routes/activity.route';
 import todoRoutes from './routes/todo';
 
 const app: Application = express();
@@ -18,6 +18,6 @@ app.use((_, res: Response, next: NextFunction) => {
 });
 
 app.use('/activity-groups', activityRoutes);
-app.use('/todo-items', todoRoutes);
+// app.use('/todo-items', todoRoutes);
 
 app.listen(port, () => console.log(`Listening on port: ${port}`));

@@ -1,9 +1,11 @@
+import { RowDataPacket } from 'mysql2';
+
 export interface ActivityBody {
 	title: string;
 	email: string;
 }
 
-export interface ActivityResponse {
+export interface Activity extends RowDataPacket {
 	id: number;
 	title: string;
 	email: string;
@@ -17,7 +19,7 @@ export interface TodoBody {
 	is_active: boolean;
 }
 
-export interface TodoResponse {
+export interface Todo extends RowDataPacket {
 	id: number;
 	activity_group_id: number;
 	title: string;
