@@ -6,15 +6,13 @@ export function getAllActivities() {
 	const query = 'SELECT * FROM activities';
 
 	return new Promise((resolve, reject) => {
-		dbPool.query<Activity[]>(
-			query,
-			(err, result) => {
-				if (err) {
-					reject(err);
-				} else {
-					resolve(result);
-				}
-			});
+		dbPool.query<Activity[]>(query, (err, result) => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(result);
+			}
+		});
 	});
 }
 
@@ -22,16 +20,13 @@ export function getDetailActivity(activityId: string): Promise<Activity[]> {
 	const query = 'SELECT * FROM activities WHERE id=?';
 
 	return new Promise((resolve, reject) => {
-		dbPool.query<Activity[]>(
-			query,
-			[activityId],
-			(err, result) => {
-				if (err) {
-					reject(err);
-				} else {
-					resolve(result);
-				}
-			});
+		dbPool.query<Activity[]>(query, [activityId], (err, result) => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(result);
+			}
+		});
 	});
 }
 
@@ -80,7 +75,7 @@ export function updateActivity(
 						resolve(result);
 					}
 
-					getDetailActivity(activityId).then((activity) => {
+					getDetailActivity(activityId).then(activity => {
 						resolve({
 							...activity[0],
 							title,
@@ -93,19 +88,18 @@ export function updateActivity(
 	});
 }
 
-export async function deleteActivity(activityId: string): Promise<ResultSetHeader> {
+export async function deleteActivity(
+	activityId: string,
+): Promise<ResultSetHeader> {
 	const query = 'DELETE FROM activities WHERE id=?';
 
 	return new Promise((resolve, reject) => {
-		dbPool.query<ResultSetHeader>(
-			query,
-			[activityId],
-			(err, result) => {
-				if (err) {
-					reject(err);
-				} else {
-					resolve(result);
-				}
-			});
+		dbPool.query<ResultSetHeader>(query, [activityId], (err, result) => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(result);
+			}
+		});
 	});
 }

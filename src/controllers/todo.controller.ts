@@ -35,7 +35,7 @@ export async function getDetailTodo(req: Request, res: Response) {
 				message: `Todo with ID ${todoId} Not Found`,
 			});
 		}
-		
+
 		res.json({
 			status: 'Success',
 			message: 'Success',
