@@ -1,4 +1,4 @@
-import { RowDataPacket } from 'mysql2';
+import type { RowDataPacket } from 'mysql2';
 
 export interface ActivityBody {
 	title: string;
@@ -17,6 +17,13 @@ export interface TodoBody {
 	title: string;
 	activity_group_id: number;
 	is_active: boolean;
+}
+
+export interface TodoUpdateBody {
+	title: string;
+	priority: string;
+	is_active: boolean;
+	status: string;
 }
 
 export interface Todo extends RowDataPacket {

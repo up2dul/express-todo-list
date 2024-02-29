@@ -3,7 +3,7 @@ import express from 'express';
 import type { Application, NextFunction, Response } from 'express';
 
 import activityRoutes from './routes/activity.route';
-import todoRoutes from './routes/todo';
+import todoRoutes from './routes/todo.route';
 
 const app: Application = express();
 const port = 3030;
@@ -18,6 +18,6 @@ app.use((_, res: Response, next: NextFunction) => {
 });
 
 app.use('/activity-groups', activityRoutes);
-// app.use('/todo-items', todoRoutes);
+app.use('/todo-items', todoRoutes);
 
 app.listen(port, () => console.log(`Listening on port: ${port}`));
