@@ -36,7 +36,7 @@ export async function getDetailActivity(req: Request, res: Response) {
 		res.json({
 			status: 'Success',
 			message: 'Success',
-			data,
+			data: data[0],
 		});
 	} catch (error: unknown) {
 		if (error instanceof Error) {
@@ -50,6 +50,16 @@ export async function getDetailActivity(req: Request, res: Response) {
 
 export async function createActivity(req: Request, res: Response) {
 	const body: ActivityBody = req.body;
+
+	for (const key in body) {
+		const value = body[key as keyof ActivityBody];
+		if (value === undefined) {
+			return res.status(400).json({
+				status: 'Bad Request',
+				message: `${value} is required`,
+			});
+		}
+	}
 
 	try {
 		const data = await ActivityModel.createActivity(body);
