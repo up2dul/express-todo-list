@@ -2,8 +2,8 @@ import cors from 'cors';
 import express from 'express';
 import type { Application, NextFunction, Response } from 'express';
 
-import activityRoutes from './routes/activity';
-import todoRoutes from './routes/todo';
+import activityRoutes from './routes/activity.route';
+import todoRoutes from './routes/todo.route';
 
 const app: Application = express();
 const port = 3030;

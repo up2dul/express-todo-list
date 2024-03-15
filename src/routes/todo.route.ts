@@ -1,5 +1,5 @@
 import express from 'express';
-import * as TodoController from '../controllers/todo';
+import * as TodoController from '../controllers/todo.controller';
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.get('/:todoId', TodoController.getDetailTodo);
 router.post('/', TodoController.createTodo);
 
 // Update todo
-router.put('/:todoId', TodoController.updateTodo);
+router.patch('/:todoId', TodoController.updateTodo);
 
 // Delete todo
 router.delete('/:todoId', TodoController.deleteTodo);

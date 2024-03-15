@@ -1,5 +1,5 @@
 import express from 'express';
-import * as ActivityController from '../controllers/activity';
+import * as ActivityController from '../controllers/activity.controller';
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.get('/:activityId', ActivityController.getDetailActivity);
 router.post('/', ActivityController.createActivity);
 
 // Update activity
-router.put('/:activityId', ActivityController.updateActivity);
+router.patch('/:activityId', ActivityController.updateActivity);
 
 // Delete activity
 router.delete('/:activityId', ActivityController.deleteActivity);
