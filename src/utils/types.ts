@@ -5,10 +5,8 @@ export interface ActivityBody {
 	email: string;
 }
 
-export interface Activity extends RowDataPacket {
+export interface Activity extends ActivityBody, RowDataPacket {
 	id: number;
-	title: string;
-	email: string;
 	createdAt: string;
 	updatedAt: string;
 }
@@ -26,12 +24,17 @@ export interface TodoUpdateBody {
 	status: string;
 }
 
-export interface Todo extends RowDataPacket {
+export interface Todo extends TodoBody, RowDataPacket {
 	id: number;
-	activity_group_id: number;
-	title: string;
-	is_active: boolean;
 	priority: string;
 	createdAt: string;
 	updatedAt: string;
+}
+
+export enum StatusCode {
+	OK = 200,
+	CREATED = 201,
+	NOT_FOUND = 404,
+	BAD_REQUEST = 400,
+	SERVER_ERROR = 500,
 }
